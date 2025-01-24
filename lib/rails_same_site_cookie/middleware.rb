@@ -29,7 +29,8 @@ module RailsSameSiteCookie
             end
 
             unless cookie =~ /;\s*samesite=/i
-              cookie << '; SameSite=None'
+              same_site_value = ENV.fetch("COOKIES_SAME_SITE_VALUE", "None")
+              cookie << "; SameSite=#{same_site_value}"
             end
 
           end
